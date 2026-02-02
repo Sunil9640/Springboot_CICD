@@ -48,6 +48,8 @@
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>3.0.1</version>
 		</dependency>
+		
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,6 +73,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        
 		<!-- JSP Support -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>

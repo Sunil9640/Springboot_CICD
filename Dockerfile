@@ -31,4 +31,4 @@ COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8081
  
 # The base image already starts Tomcat via catalina.sh run
-# CMD ["catalina.sh", "run"]
+CMD ["catalina.sh", "run"]

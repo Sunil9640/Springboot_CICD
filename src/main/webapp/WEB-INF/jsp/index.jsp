@@ -2,9 +2,15 @@
 <html>
 <head>
     <title>User List</title>
+    
 </head>
 <body>
     <h2>List of Users</h2>
+    <div style="font-weight:bold;">
+    Styling is Done for Bolding The Text
+</div>
+
+    
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
             <th>ID</th>
