@@ -32,7 +32,7 @@ jobs:
     - name: login to docker hub
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD}}
     - name: Build docker image
-      run: docker build -t sunilya96/testing_docker_ec2
+      run: docker build -t sunilya96/testing_docker_ec2:latest .
     - name: publish image to docker hub
       run: docker push sunilya96/testing_docker_ec2
 
