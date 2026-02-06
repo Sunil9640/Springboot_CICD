@@ -36,7 +36,7 @@ jobs:
     - name: publish image to docker hub
       run: docker push sunilya96/testing_docker_ec2
 
-deploy:
+  deploy:
     needs: build
     runs-on: [aws_ec2]
     steps:
