@@ -10,6 +10,12 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    # Expose secrets as environment variables
+    env:
+      DB_URL: ${{ secrets.DB_URL }}
+      CODEUSER: ${{ secrets.CODEUSER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     steps:
       - uses: actions/checkout@v4
