@@ -58,11 +58,16 @@ jobs:
           docker network inspect mynetwork >/dev/null 2>&1 || \
           docker network create mynetwork
 
+      
       - name: Run new container
         run: |
           docker run -d \
-            --name springboot-app \
-            --network mynetwork \
-            -p 8081:8080 \
-            -e JAVA_OPTS="-Xms128m -Xmx256m" \
-            sunilya96/testing_docker_ec2:latest
+          --name springboot-app \
+          --network mynetwork \
+          -p 8081:8080 \
+          -e DB_URL="${{ secrets.DB_URL }}" \
+          -e DB_USERNAME="${{ secrets.DB_USERNAME }}" \
+          -e DB_PASSWORD="${{ secrets.DB_PASSWORD }}" \
+          -e MONGO_URI="${{ secrets.MONGO_URI }}" \
+          -e JAVA_OPTS="-Xms128m -Xmx256m" \
+          sunilya96/testing_docker_ec2:latest
