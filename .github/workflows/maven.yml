@@ -36,9 +36,26 @@ jobs:
     - name: publish image to docker hub
       run: docker push sunilya96/testing_docker_ec2
 
-# deploy:
-#     needs: build
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Deploy to production
-#       run: echo "Deploying to production server..."
+deploy:
+    needs: build
+    runs-on: [aws_ec2]
+    steps:
+    - name: pull the image from docker hub
+      run: docker pull sunilya96/testing_docker_ec2:latest
+
+
+      -name: removing all none images
+      run: docker image prune -f
+
+    - name: Stop & remove old container if exists
+      run: |
+        docker ps -a --format '{{.Names}}' | grep -w springboot-app >/dev/null 2>&1 && \
+          docker stop springboot-app || true
+        docker ps -a --format '{{.Names}}' | grep -w springboot-app >/dev/null 2>&1 && \
+          docker rm springboot-app || true
+
+    - name: Run the new container
+      
+      run: run -p 8081:8080 --name Springboot-app --network mynetwork --link mymongo:mongo -d sunilya96/testing_docker_ec2:latest
+    
+
