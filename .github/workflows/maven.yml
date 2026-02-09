@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     # Expose secrets as environment variables
     env:
-      DB_URL: ${{ secrets.DB_URL }}
-      CODEUSER: ${{ secrets.CODEUSER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
+      SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
+      SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -71,14 +70,11 @@ jobs:
           --name springboot-app \
           --network mynetwork \
           -p 8081:8080 \
-          -e DB_HOST \
-          -e DB_NAME \
-          -e DB_USER \
-          -e DB_PASS \
-          -e SERVER_IP \   
-          -e SERVER_PORT \
+          -e SPRING_DATASOURCE_URL="${{ secrets.SPRING_DATASOURCE_URL }}" \
+          -e SPRING_DATASOURCE_USERNAME="${{ secrets.SPRING_DATASOURCE_USERNAME }}" \
+          -e SPRING_DATASOURCE_PASSWORD="${{ secrets.SPRING_DATASOURCE_PASSWORD }}" \
+          -e MONGO_URI="${{ secrets.MONGO_URI }}" \
           -e JAVA_OPTS="-Xms128m -Xmx256m" \
           sunilya96/testing_docker_ec2:latest
-
 
 
