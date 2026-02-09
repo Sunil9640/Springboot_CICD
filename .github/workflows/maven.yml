@@ -71,12 +71,12 @@ jobs:
           --name springboot-app \
           --network mynetwork \
           -p 8081:8080 \
-          - DB_HOST \
-          -DB_NAME \
-          -DB_USER \
-          -DB_PASS \
-          -SERVER_IP \   
-          -SERVER_PORT \
+          -e DB_HOST \
+          -e DB_NAME \
+          -e DB_USER \
+          -e DB_PASS \
+          -e SERVER_IP \   
+          -e SERVER_PORT \
           -e JAVA_OPTS="-Xms128m -Xmx256m" \
           sunilya96/testing_docker_ec2:latest
 
